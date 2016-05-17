@@ -1,0 +1,58 @@
+<html>
+<body>
+	<canvas id="myCanvas" width="1900" height="990" style="border:1px solid #000000;"></canvas>
+</body>
+<script>
+
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+var w=20;
+var points=[];
+
+main();
+
+function main(){
+	for(var i=0;i<5;i++){
+		points[i]={x:Math.random()*1900,y:Math.random()*990};
+	}
+	ctx.lineWidth=5;
+	drawMainLine();
+	drawLowerLine();
+}
+
+function drawMainLine(){
+	ctx.beginPath();
+	ctx.moveTo(points[0].x,points[0].y);
+	for(var i=0;i<points.length;i++){
+		var pts=points[i];
+		ctx.lineTo(pts.x,pts.y);
+	}
+	ctx.strokeStyle="red";
+	ctx.stroke();
+}
+
+function drawLowerLine(){
+	ctx.beginPath();
+	ctx.moveTo(points[0].x,points[0].y);
+	for(var i=2;i<points.length;i++){
+		var pts=radials(i);
+		ctx.lineTo(pts.x,pts.y);
+	}
+	// ctx.strokeStyle="black";
+	ctx.stroke();
+}
+
+function radials(i){
+	var p1=points[i-2];
+	var p2=points[i-1];
+	var p3=points[i];
+
+	var a1=Math.atan((p2.y-p1.y)/(p2.x-p1.x));
+	var a2=Math.atan((p2.y-p3.y)/(p2.x-p3.x));
+	var h=w/(Math.cos((a1+a2)/2));
+	var p={x:(p2.x+h*Math.sin((3*a1+a2)/2)),y:(p2.y+h*Math.cos((3*a1+a2)/2))}
+	return(p);
+}
+
+</script>
+</html>
