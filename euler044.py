@@ -30,4 +30,6 @@ def findPair(to):
                 print('took %s seconds' % (end-start))
                 return True
     return False
+
+findPair(3000)
 print(pent(2167)-pent(1020))

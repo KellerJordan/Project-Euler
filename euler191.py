@@ -1,6 +1,8 @@
 def euler(n):
+    """case with no L's"""
     r=2**n
     r-=sumial(n)
+    """cases with 1 L"""
     p=0
     while p<n:
         q=n-p-1
