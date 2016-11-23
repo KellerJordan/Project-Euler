@@ -1,20 +1,13 @@
 from math import sqrt
 
 def euler(n):
-    v=1
-    for f in pfactors(n):
-        if not pfactors(f):
-            v=f
-    return v
+    d, f = 2, 2
+    while d <= sqrt(n):
+        while n % d == 0:
+            n //= d
+            f = d
+        d += 1
+    return n if n > f else f   
 
-def pfactors(n):
-    factors=[]
-    i=3
-    sqn=sqrt(n)
-    while i<=sqn:
-        if not n%i:
-            factors.append(i)
-        i+=2
-    return factors
-
-print(euler(600851475143))
+for _ in range(int(input().strip())):
+    print(euler(int(input().strip())))

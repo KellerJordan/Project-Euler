@@ -1,30 +1,12 @@
-import time
+def fibgen():
+    a, b = 0, 2
+    while True:
+        yield a
+        a, b = b, a + 4 * b
 
-def sum1(n):
-    f=1
-    g=1
-    h=0
-    s=0
-    start=time.time()
-    while f<n:
-        h=g
-        g=f
-        f+=h
-        if f%2==0:
-            s+=f
-    print(time.time()-start)
-
-def sum2(n):
-    e=0
-    o=1
-    s=0
-    start=time.time()
-    while(e<n):
-        s+=e
-        o2=o
-        o+=2*e
-        e=3*e+2*o2
-    print(time.time()-start)
-
-sum1(10**20000)
-sum2(10**40000)
+for _ in range(int(input().strip())):
+    n, s, f, F = int(input().strip()), 0, 0, fibgen()
+    while(f <= n):
+        s += f
+        f = next(F)
+    print(s)

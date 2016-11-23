@@ -1,13 +1,16 @@
-def ispalindrome(n):
-    if str(n)[::-1]==str(n):
-        return True
-    return False
-def euler(v):
-    m=0
-    for a in range(v):
-        for b in range(v):
-            if ispalindrome(a*b) and a*b>m:
-                m=a*b
-    return m
+def palgen():
+    P = []
+    for i in range(100, 1000):
+        for j in range(100, 1000):
+            p = i * j
+            if p > 101100 and str(p) == str(p)[::-1]:
+                P.append(p)
+    return P
 
-print(euler(999))
+P = palgen()
+for _ in range(int(input().strip())):
+    n, m = int(input().strip()), 0
+    for p in P:
+        if p > m and p < n:
+            m = p
+    print(m)
