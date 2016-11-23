@@ -1,4 +1,4 @@
-[Project Euler](https://projecteuler.net/archives)
+Problems come from [projecteuler.net](https://projecteuler.net/archives), code submitted to the Project Euler section on [HackerRank](https://www.hackerrank.com/contests/projecteuler/challenges).
 
 Favorite Problems:
 * Problem 191
