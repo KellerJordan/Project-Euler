@@ -1,3 +1,5 @@
+// non dynamic solution in c++
+
 #include <iostream>
 #include <cmath>
 
